@@ -57,7 +57,7 @@ for i in range(rows):
         if(k<cols1):
             if(image[i][cols1-k-1][0] == 0 and image[i][cols1-k-1][1] == 0 and image[i][cols1-k-1][2] == 0):
                 continue
-            if((image[i][cols1-k][0] != 0 and image[i][cols1-k][1] != 0 and image[i][cols1-k][2] != 0) and (image[i][cols1-k][0] != 255 and image[i][cols1-k][1] != 255 and image[i][cols1-k][2] != 255)):  #patrz na prawo jeśli kolor nie jest czarny lub bialy to wtedy trzeba sie cofnac kolorkami
+            if((image[i][cols1-k][0] != 0 and image[i][cols1-k][1] != 0 and image[i][cols1-k][2] != 0) and (image[i][cols1-k][0] != 255 and image[i][cols1-k][1] != 255 and image[i][cols1-k][2] != 255)):  
                 image[i][(cols1-k)-1] = image[i][cols1-k]
 
 
