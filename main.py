@@ -16,7 +16,7 @@ list_of_colors = []         #Lista kolorow
 #Lista kolorow - pierwszy nowy kolor
 new_color = list(np.random.choice(range(1, 255, 1), size=3, replace=False)) 
 
-image = cv2.imread('shapes.png', 0)                #Wczytanie obrazu (sciezka)
+image = cv2.imread('shapes4.png', 0)                #Wczytanie obrazu (sciezka)
 image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)     #Zamiana barw na obrazie
 
 #Wymiary obrazu
@@ -59,6 +59,22 @@ for i in range(rows):
                 continue
             if((image[i][cols1-k][0] != 0 and image[i][cols1-k][1] != 0 and image[i][cols1-k][2] != 0) and (image[i][cols1-k][0] != 255 and image[i][cols1-k][1] != 255 and image[i][cols1-k][2] != 255)):  
                 image[i][(cols1-k)-1] = image[i][cols1-k]
+                
+#Eliminacja problemu "bananowego" - algorytm przechodzi przez obraz od dołu do góry.              
+for i in range(rows-1, 0, -1):
+    for j in range(cols-1, 0 , -1):
+       
+            
+                if(image[i][j][0] == 0 and image[i][j][1] == 0 and image[i][j][2] == 0):
+                    continue
+                if((image[i][j][0] != 0 and image[i][j][1] != 0 and image[i][j][2] != 0) and (image[i][j][0] != 255 and image[i][j][1] != 255 and image[i][j][2] != 255) and (image[i][j-1][0] != 0 and image[i][j-1][1] != 0 and image[i][j-1][2] != 0)):  
+                    image[i][j-1] = image[i][j]
+                    
+                if (image[i+1][j][0] != 0 and image[i+1][j][1] != 0 and image[i+1][j][2] != 0):         
+                    image[i][j] = image[i+1][j]
+                elif(image[i+1][j+1][0] != 0 and image[i+1][j+1][1] != 0 and image[i+1][j+1][2] != 0):  
+                    image[i][j] = image[i+1][j+1] 
+
 
 
 #Ponowny odczyt calego obrazu w celu zliczenia wystepujacych obiektow
