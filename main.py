@@ -16,7 +16,7 @@ list_of_colors = []         #Lista kolorow
 #Lista kolorow - pierwszy nowy kolor
 new_color = list(np.random.choice(range(1, 255, 1), size=3, replace=False)) 
 
-image = cv2.imread('shapes4.png', 0)                #Wczytanie obrazu (sciezka)
+image = cv2.imread('shapes5.png', 0)                #Wczytanie obrazu (sciezka)
 image = cv2.cvtColor(image, cv2.COLOR_GRAY2RGB)     #Zamiana barw na obrazie
 
 #Wymiary obrazu
@@ -74,8 +74,6 @@ for i in range(rows-1, 0, -1):
                     image[i][j] = image[i+1][j]
                 elif(image[i+1][j+1][0] != 0 and image[i+1][j+1][1] != 0 and image[i+1][j+1][2] != 0):  
                     image[i][j] = image[i+1][j+1] 
-
-
 
 #Ponowny odczyt calego obrazu w celu zliczenia wystepujacych obiektow
 for i in range(rows): 
